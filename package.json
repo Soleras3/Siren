@@ -1,0 +1,22 @@
+{
+  "name": "siren",
+  "version": "1.0.0",
+  "description": "A Discord bot for restream and tournament management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Soleras3/Siren.git"
+  },
+  "author": "Soleras3",
+  "license": "AGPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/Soleras3/Siren/issues"
+  },
+  "homepage": "https://github.com/Soleras3/Siren#readme",
+  "dependencies": {
+    "discord.js": "^14.7.1"
+  }
+}
