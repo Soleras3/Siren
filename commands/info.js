@@ -13,26 +13,28 @@ const data = new SlashCommandBuilder()
 		subcommand
 			.setName('server')
 			.setDescription('Info about the server'));
-            // NOTE: Permissions example.
-            //.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers);
+// NOTE: Permissions example.
+// .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers);
 
 module.exports = {
-    data: data,
-    async execute(interaction) {
-        switch(interaction.options.getSubcommand()) {
-            case 'user':
-                const user = interaction.options.getUser('target');
-                let member = interaction.member;
-                if (user) {
-                    member = await interaction.guild.members.fetch(user);
-                }
-                await interaction.reply(`${user ?? interaction.user.username} joined on ${member.joinedAt}.`);
-                break;
-            case 'server':
-                await interaction.reply(`This server is ${interaction.guild.name} and has ${interaction.guild.memberCount} members.`);
-                break;
-            default:
-                break;
-        }
-    }
-}
+	data: data,
+	async execute(interaction) {
+		switch (interaction.options.getSubcommand()) {
+		case 'user': {
+			const user = interaction.options.getUser('target');
+			let member = interaction.member;
+			if (user) {
+				member = await interaction.guild.members.fetch(user);
+			}
+			await interaction.reply(`${user ?? interaction.user.username} joined on ${member.joinedAt}.`);
+			break;
+		}
+		case 'server': {
+			await interaction.reply(`This server is ${interaction.guild.name} and has ${interaction.guild.memberCount} members.`);
+			break;
+		}
+		default:
+			break;
+		}
+	},
+};

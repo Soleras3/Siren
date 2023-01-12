@@ -26,14 +26,15 @@ const rest = new REST({ version: '10' }).setToken(token);
 			{ body: commands },
 		);
 
-        // Creates global commands (works in any server)
-        // await rest.put(
-        //     Routes.applicationCommands(clientId),
-        //     { body: commands },
-        // );
+		// Creates global commands (works in any server)
+		// await rest.put(
+		//     Routes.applicationCommands(clientId),
+		//     { body: commands },
+		// );
 
 		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-	} catch (error) {
+	}
+	catch (error) {
 		// And of course, make sure you catch and log any errors!
 		console.error(error);
 	}
