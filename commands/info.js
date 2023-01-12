@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+// const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 
 const data = new SlashCommandBuilder()
 	.setName('info')
@@ -12,6 +13,8 @@ const data = new SlashCommandBuilder()
 		subcommand
 			.setName('server')
 			.setDescription('Info about the server'));
+            // NOTE: Permissions example.
+            //.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers);
 
 module.exports = {
     data: data,
