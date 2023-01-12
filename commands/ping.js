@@ -5,6 +5,11 @@ module.exports = {
         .setName('ping')
         .setDescription('Replies with Pong!'),
     async execute(interaction) {
-        await interaction.reply('Pong!');
+        const sent = await interaction.reply({ content: 'Pinging...', fetchReply: true });
+        // [text](http://site.com)
+        await interaction.editReply(`Roundtrip latency: ${sent.createdTimestamp - interaction.createdTimestamp}ms`);
+        // await interaction.deleteReply();
+        const message = await interaction.fetchReply();
+        console.log(message);
     },
 };
