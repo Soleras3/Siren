@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const Sequelize = require('sequelize');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
 
@@ -9,6 +10,14 @@ client.commands = new Collection();
 
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+const sequelize = new Sequelize('database', 'user', 'password', {
+	host: 'localhost',
+	dialect: 'sqlite',
+	logging: false,
+	// SQLite only
+	storage: 'database.sqlite',
+});
 
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file);

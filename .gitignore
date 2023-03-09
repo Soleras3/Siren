@@ -1,5 +1,6 @@
 # Project
 config.json
+database.sqlite
 
 # Logs
 logs
