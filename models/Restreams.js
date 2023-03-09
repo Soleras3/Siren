@@ -1,4 +1,3 @@
-/* eslint-disable no-inline-comments */
 module.exports = (sequelize, DataTypes) => {
 	return sequelize.define('restreams', {
 		assignment_id: {
@@ -17,10 +16,10 @@ module.exports = (sequelize, DataTypes) => {
 		display_title: DataTypes.STRING,
 		display_date: DataTypes.STRING,
 		event: DataTypes.STRING,
-		assigned_by: DataTypes.BIGINT, // Volunteers
-		opened_by: DataTypes.BIGINT, // Volunteers
+		// assigned_by: DataTypes.BIGINT, Volunteers
+		// opened_by: DataTypes.BIGINT, Volunteers
 		status: DataTypes.ENUM('open', 'complete', 'closed'),
-		team: DataTypes.BIGINT, // RestreamTeams
-		restream_channel: DataTypes.STRING,
+		// team: DataTypes.BIGINT, RestreamTeams
+		// channel: DataTypes.BIGINT, RestreamChannels
 	});
 };

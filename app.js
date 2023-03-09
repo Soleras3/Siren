@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const Sequelize = require('sequelize');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+// require('./dbObjects.js');
 const { token } = require('./config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
