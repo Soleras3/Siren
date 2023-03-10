@@ -4,6 +4,7 @@ const Sequelize = require('sequelize');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 // require('./dbObjects.js');
 const { token } = require('./config.json');
+const { Guilds } = require('./dbObjects');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -56,8 +57,16 @@ client.on(Events.InteractionCreate, async interaction => {
 // 	console.log(interaction.customId);
 // });
 
-client.once(Events.ClientReady, c => {
-	console.log(`Ready! Logged in as ${c.user.tag}`);
+client.once(Events.ClientReady, async () => {
+	sequelize.sync().then(async () => {
+		const guilds = [];
+		for (const guild of client.guilds.cache.map(g => g)) {
+			guilds.push(Guilds.upsert({ discord_id: guild.id, name: guild.name }));
+		}
+		await Promise.all(guilds);
+	}).catch(console.error);
+
+	console.log(`Ready! Logged in as ${client.user.tag}`);
 });
 
 // Log in to Discord
